@@ -16,22 +16,25 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/*" element={
-          isAuthenticated ? (
-            <Layout>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/menu" element={<MenuManagement />} />
-                <Route path="/orders" element={<Orders />} />
-                <Route path="/tables" element={<Tables />} />
-                <Route path="/reservations" element={<Reservations />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
-            </Layout>
-          ) : (
-            <Navigate to="/login" />
-          )
-        } />
+        <Route 
+          path="/*" 
+          element={
+            isAuthenticated ? (
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/menu" element={<MenuManagement />} />
+                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/tables" element={<Tables />} />
+                  <Route path="/reservations" element={<Reservations />} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+              </Layout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          } 
+        />
       </Routes>
     </Router>
   );

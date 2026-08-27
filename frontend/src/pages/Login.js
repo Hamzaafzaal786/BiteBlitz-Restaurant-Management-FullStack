@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Form, Button, Alert, Container } from 'react-bootstrap';
 import { login } from '../services/api';
@@ -10,11 +10,12 @@ function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Check if already logged in
-  if (localStorage.getItem('access_token')) {
-    navigate('/');
-    return null;
-  }
+  // Check if already logged in - wrapped in useEffect
+  useEffect(() => {
+    if (localStorage.getItem('access_token')) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
